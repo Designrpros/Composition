@@ -421,6 +421,14 @@ const CardDescription = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
+
+const HeroImage = styled(Image)`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+`;
+
 const DiveDeeperLink = styled(Link)`
   display: inline-block;
   background: none;
@@ -620,6 +628,12 @@ export default function Basics() {
     <PageContainer>
       <Toolbar />
       <HeroContainer>
+      <HeroImage
+          src="/basics-hero.png" // Replace with a Figma-themed image
+          alt="basics Hero"
+          layout="fill"
+          priority
+        />
         <HeroText>
           <HeroTitle>Basics</HeroTitle>
           <HeroSubtitle>Start Your Design Journey with Confidence</HeroSubtitle>
