@@ -1,7 +1,7 @@
 // src/components/Toolbar.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -205,7 +205,6 @@ const BurgerIcon = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
-// Define the tabs array with TypeScript typing
 interface Tab {
   id: string;
   href: string;
@@ -233,12 +232,13 @@ const tabs: Tab[] = [
 ];
 
 // Toolbar Component
-export default function Toolbar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) {
+export default function Toolbar() {
+  const [isOpen, setIsOpen] = useState(false); // Manage state locally
   const pathname = usePathname();
   const activeTab = pathname === "/" ? "home" : pathname.slice(1) || "home";
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   return (

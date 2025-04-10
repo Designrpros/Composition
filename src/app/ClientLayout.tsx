@@ -2,14 +2,14 @@
 "use client";
 
 import React, { useState } from "react";
-import Toolbar from "../components/Toolbar";
+import Toolbar from "./components/Toolbar";
 
 const ClientLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Toolbar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Toolbar />
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(child, { isOpen } as { isOpen: boolean })
