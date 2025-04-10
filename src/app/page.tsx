@@ -301,7 +301,7 @@ export default function Composition() {
         <ButtonContainer>
           <ActionButton
             primary
-            href="/graphic-design-resources"
+            href="/basics"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >

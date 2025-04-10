@@ -8,7 +8,6 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
-import Toolbar from "../../components/Toolbar";
 import Link from "next/link";
 
 // === Theme ===
@@ -626,7 +625,6 @@ export default function Basics() {
 
   return (
     <PageContainer>
-      <Toolbar />
       <HeroContainer>
       <HeroImage
           src="/basics-hero.png" // Replace with a Figma-themed image

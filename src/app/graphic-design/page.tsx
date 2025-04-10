@@ -571,7 +571,6 @@ export default function GraphicDesign() {
 
   return (
     <PageContainer>
-      <Toolbar />
       <HeroContainer>
         <HeroImage
           src="/graphic-design.png" // Replace with a relevant image

@@ -242,7 +242,6 @@ export default function IndexPage() {
 
   return (
     <PageContainer>
-      <Toolbar />
       <MainContent>
         <ContentContainer>
           {glossary.map((entry) => (

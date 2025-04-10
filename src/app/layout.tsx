@@ -1,6 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
-import Toolbar from "../components/Toolbar";
+import ClientLayout from "./ClientLayout"; // New client-side wrapper
 import StyledComponentsRegistry from "./styled-components-registry";
 
 // Metadata for the application
@@ -24,13 +24,12 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <html lang="en">
       <body
         style={{
-          marginLeft: "0px", // Offset for toolbar width
+          margin: 0,
           minHeight: "100vh",
         }}
       >
         <StyledComponentsRegistry>
-          <Toolbar />
-          {children}
+          <ClientLayout>{children}</ClientLayout>
         </StyledComponentsRegistry>
       </body>
     </html>

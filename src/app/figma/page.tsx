@@ -598,7 +598,6 @@ export default function Figma() {
 
   return (
     <PageContainer>
-      <Toolbar />
       <HeroContainer>
         <HeroImage
           src="/figma-logo.svg" // Replace with a Figma-themed image

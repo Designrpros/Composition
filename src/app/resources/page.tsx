@@ -686,7 +686,6 @@ export default function Resources() {
 
   return (
     <PageContainer>
-      <Toolbar />
       <HeroContainer>
         <HeroImage
           src="/resources.png" // Replace with a resources-themed image

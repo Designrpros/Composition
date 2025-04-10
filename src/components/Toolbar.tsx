@@ -1,7 +1,7 @@
 // src/components/Toolbar.tsx
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const ToolbarContainer = styled.div<{ $isOpen: boolean }>`
   top: 0;
   left: 0;
   height: 100vh;
-  width: 80px; /* Desktop default */
+  width: 80px;
   background-color: #2E2E2E;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ const ToolbarContainer = styled.div<{ $isOpen: boolean }>`
   transform: translateX(0);
 
   @media (min-width: 1920px) {
-    width: 100px; /* Wider for ultra-wide screens */
+    width: 100px;
     padding: 1.5rem 0;
   }
 
@@ -38,7 +38,7 @@ const ToolbarContainer = styled.div<{ $isOpen: boolean }>`
   }
 
   @media (max-width: 480px) {
-    width: ${({ $isOpen }) => ($isOpen ? "180px" : "50px")}; /* Slightly smaller for small mobile */
+    width: ${({ $isOpen }) => ($isOpen ? "180px" : "50px")};
     padding: ${({ $isOpen }) => ($isOpen ? "1rem 0.75rem" : "0.5rem 0")};
   }
 `;
@@ -52,7 +52,7 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
   width: 100%;
 
   @media (min-width: 1920px) {
-    gap: 2rem; /* More spacing for ultra-wide */
+    gap: 2rem;
   }
 
   @media (max-width: 900px) {
@@ -63,7 +63,7 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
 
   @media (max-width: 480px) {
     padding-left: 0.75rem;
-    gap: 1rem; /* Tighter spacing for small screens */
+    gap: 1rem;
   }
 `;
 
@@ -100,7 +100,7 @@ const NavLink = styled(Link)<{ $isActive: boolean; $isOpen?: boolean }>`
   `}
 
   @media (min-width: 1920px) {
-    font-size: 1rem; /* Slightly larger for ultra-wide */
+    font-size: 1rem;
     padding: 1rem;
     gap: 0.75rem;
   }
@@ -114,14 +114,14 @@ const NavLink = styled(Link)<{ $isActive: boolean; $isOpen?: boolean }>`
     gap: 1rem;
 
     span {
-      display: ${({ $isOpen }) => ($isOpen ? "inline" : "none")}; /* Full text when open, hidden when closed */
+      display: ${({ $isOpen }) => ($isOpen ? "inline" : "none")};
     }
 
     ${({ $isActive }) =>
       $isActive &&
       `
       &::after {
-        display: none; /* Hide vertical bar in mobile view */
+        display: none;
       }
     `}
   }
@@ -152,12 +152,12 @@ const Tooltip = styled.span`
   }
 
   @media (min-width: 1920px) {
-    left: 110px; /* Adjust for wider toolbar */
+    left: 110px;
     font-size: 1rem;
   }
 
   @media (max-width: 900px) {
-    display: none; /* Tooltips not needed in mobile view */
+    display: none;
   }
 `;
 
@@ -200,39 +200,45 @@ const BurgerIcon = styled.div<{ $isOpen: boolean }>`
     gap: 5px;
 
     div {
-      width: 25px; /* Slightly smaller for small screens */
+      width: 25px;
     }
   }
 `;
 
-// === Toolbar Component ===
-export default function Toolbar() {
+// Define the tabs array with TypeScript typing
+interface Tab {
+  id: string;
+  href: string;
+  icon: string;
+  label: string;
+}
+
+const tabs: Tab[] = [
+  { id: "home", href: "/", icon: "/composition-logo.png", label: "Home" },
+  { id: "basics", href: "/basics", icon: "/basics.png", label: "Basics" },
+  {
+    id: "graphic-design",
+    href: "/graphic-design",
+    icon: "/graphic-design.png",
+    label: "Graphic Design",
+  },
+  { id: "figma", href: "/figma", icon: "/figma-logo.svg", label: "Figma" },
+  {
+    id: "resources",
+    href: "/resources",
+    icon: "/resources.png",
+    label: "Resources",
+  },
+  { id: "index", href: "/index-page", icon: "/index.png", label: "Index" },
+];
+
+// Toolbar Component
+export default function Toolbar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const tabs = [
-    { id: "home", href: "/", icon: "/composition-logo.png", label: "Home" },
-    { id: "basics", href: "/basics", icon: "/basics.png", label: "Basics" },
-    {
-      id: "graphic-design",
-      href: "/graphic-design",
-      icon: "/graphic-design.png",
-      label: "Graphic Design",
-    },
-    { id: "figma", href: "/figma", icon: "/figma-logo.svg", label: "Figma" },
-    {
-      id: "resources",
-      href: "/resources",
-      icon: "/resources.png",
-      label: "Resources",
-    },
-    { id: "index", href: "/index-page", icon: "/index.png", label: "Index" },
-  ];
-
   const activeTab = pathname === "/" ? "home" : pathname.slice(1) || "home";
 
   const toggleMenu = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -243,12 +249,12 @@ export default function Toolbar() {
         <div />
       </BurgerIcon>
       <NavLinks $isOpen={isOpen}>
-        {tabs.map((tab) => (
+        {tabs.map((tab: Tab) => (
           <NavLink
             key={tab.id}
             href={tab.href}
             $isActive={activeTab === tab.id}
-            $isOpen={isOpen} // Pass isOpen to NavLink
+            $isOpen={isOpen}
             onClick={() => setIsOpen(false)}
           >
             <Image
@@ -258,7 +264,7 @@ export default function Toolbar() {
               height={24}
               style={{ filter: "invert(1)" }}
             />
-            <span>{isOpen ? tab.label : tab.label.charAt(0)}</span>
+            <span>{tab.label.charAt(0)}</span>
             <Tooltip>{tab.label}</Tooltip>
           </NavLink>
         ))}
