@@ -282,14 +282,14 @@ export default function Composition() {
       <MainContent>
         <DesignBlob />
         <Image
-          src="/composition-logo.png" // Replace with your custom logo
+          src="/composition-logo.png"
           alt="Composition logo"
           width={200}
           height={200}
           priority
           style={{
             filter: hovered ? "drop-shadow(0 0 10px rgba(255, 111, 97, 0.5))" : "none",
-            transition: "filter 0.25s ease", // Smooth hover effect
+            transition: "filter 0.25s ease",
           }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
@@ -300,7 +300,6 @@ export default function Composition() {
         </HeroSubtitle>
         <ButtonContainer>
           <ActionButton
-            primary
             href="/basics"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
@@ -313,7 +312,7 @@ export default function Composition() {
             rel="noopener noreferrer"
           >
             <Image
-              src="/figma-icon.svg" // Replace with Figma icon
+              src="/figma-icon.svg"
               alt="Figma icon"
               width={20}
               height={20}

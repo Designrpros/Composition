@@ -19,7 +19,7 @@ const theme = {
   },
 };
 
-// === Styled Components (Inspired by Music Index) ===
+// === Styled Components ===
 const PageContainer = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -32,10 +32,10 @@ const PageContainer = styled.div`
 
 const MainContent = styled.div`
   flex: 1;
-  padding: 5rem 1rem 1rem 100px; /* Offset for fixed toolbar */
+  padding: 5rem 1rem 1rem 100px;
 
   @media (max-width: 768px) {
-    padding: 5rem 1rem 1rem 80px; /* Adjust for mobile toolbar */
+    padding: 5rem 1rem 1rem 80px;
   }
 `;
 
@@ -71,16 +71,16 @@ const ToggleIcon = styled.span`
   color: ${theme.colors.textSecondary};
 `;
 
-const SectionText = styled.p`
+const SectionText = styled.div`
   font-size: 0.75rem;
   color: ${theme.colors.textSecondary};
   line-height: 1.4;
   margin-bottom: 0.75rem;
 `;
 
-const SectionContent = styled.div<{ isOpen: boolean }>`
-  padding: ${({ isOpen }) => (isOpen ? "0.5rem 0" : "0")};
-  height: ${({ isOpen }) => (isOpen ? "auto" : "0")};
+const SectionContent = styled.div<{ isopen: string }>`  // Changed to string type
+  padding: ${({ isopen }) => (isopen === "true" ? "0.5rem 0" : "0")};
+  height: ${({ isopen }) => (isopen === "true" ? "auto" : "0")};
   overflow: hidden;
 `;
 
@@ -257,7 +257,7 @@ export default function IndexPage() {
                   {entry.preview}
                 </ReactMarkdown>
               </SectionText>
-              <SectionContent isOpen={openSections[entry.id]}>
+              <SectionContent isopen={openSections[entry.id].toString()}>
                 <SectionList>
                   {entry.details.map((item, index) => (
                     <ListItem key={index}>
