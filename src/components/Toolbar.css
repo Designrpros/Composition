@@ -97,8 +97,7 @@
     font-weight: 600;
     font-size: 0.9rem;
     transition: color 0.25s ease;
-    position: relative;
-    box-sizing: border-box;
+    position: relative; /* Ensure positioning context for the ::after */
   }
   
   .nav-link:hover {
@@ -114,11 +113,10 @@
     position: absolute;
     right: -10px;
     width: 4px;
-    height: calc(100% + 1.5rem); /* Include padding (0.75rem top + 0.75rem bottom) */
-    background: #FF6F61; /* Red color */
+    height: 100%; /* Ensure the line spans the full height of the NavLink */
+    background: #FF6F61;
     border-radius: 2px;
-    top: -0.75rem; /* Offset by the top padding to start from the top */
-    bottom: -0.75rem; /* Ensure it extends to the bottom */
+    top: 0; /* Align to the top of the NavLink */
   }
   
   @media (min-width: 1920px) {
@@ -126,12 +124,6 @@
       font-size: 1rem;
       padding: 1rem;
       gap: 0.75rem;
-    }
-  
-    .nav-link[data-is-active="true"]::after {
-      height: calc(100% + 2rem); /* Adjust for larger padding (1rem top + 1rem bottom) */
-      top: -1rem;
-      bottom: -1rem;
     }
   }
   
@@ -146,11 +138,11 @@
     }
   
     .nav-link span[data-is-open="true"] {
-      display: inline;
+      display: inline; /* Show full text on mobile when open */
     }
   
     .nav-link span[data-is-open="false"] {
-      display: none;
+      display: none; /* Hide text when closed */
     }
   
     .nav-link[data-is-active="true"]::after {
@@ -163,10 +155,6 @@
       font-size: 0.9rem;
       padding: 0.75rem;
       gap: 0.75rem;
-    }
-  
-    .nav-link[data-is-active="true"]::after {
-      display: none;
     }
   }
   
