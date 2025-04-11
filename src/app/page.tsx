@@ -333,7 +333,7 @@ export default function Composition() {
         </FooterLink>
         <FooterLink href="https://www.awwwards.com/" target="_blank" rel="noopener noreferrer">
           <Image
-            src="/awwwards-icon.svg" // Replace with Awwwards icon
+            src="/awwwards.png" // Replace with Awwwards icon
             alt="Awwwards icon"
             width={16}
             height={16}
@@ -342,7 +342,7 @@ export default function Composition() {
         </FooterLink>
         <FooterLink href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">
           <Image
-            src="/google-fonts-icon.svg" // Replace with Google Fonts icon
+            src="/google-fonts-icon.jpg" // Replace with Google Fonts icon
             alt="Google Fonts icon"
             width={16}
             height={16}

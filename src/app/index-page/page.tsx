@@ -5,7 +5,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import Toolbar from "../components/Toolbar";
+import Toolbar from "../../components/Toolbar";
 
 // === Theme (Minimal Use) ===
 const theme = {

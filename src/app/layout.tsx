@@ -1,6 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
-import Toolbar from "./components/Toolbar";
+import Toolbar from "../components/Toolbar";
 import StyledComponentsRegistry from "./styled-components-registry";
 
 // Metadata for the application

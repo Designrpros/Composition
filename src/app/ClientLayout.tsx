@@ -2,10 +2,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Toolbar from "./components/Toolbar";
+import Toolbar from "../components/Toolbar";
 
 const ClientLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen] = useState(false);
 
   return (
     <>
