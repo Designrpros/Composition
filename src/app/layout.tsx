@@ -1,9 +1,10 @@
 // app/layout.tsx
+import React from "react";
 import "./globals.css";
 import Toolbar from "../components/Toolbar";
 import StyledComponentsRegistry from "./styled-components-registry";
+import ClientErrorBoundaryWrapper from "../components/ClientErrorBoundary";
 
-// Metadata for the application
 export const metadata = {
   title: "Composition - Your Graphic Design Learning Companion",
   description: "Your learning companion for mastering Figma, graphic design, and essential resources.",
@@ -12,25 +13,25 @@ export const metadata = {
   },
 };
 
-// Separate viewport export
 export const viewport = {
   width: "device-width",
   initialScale: 1.0,
 };
 
-// RootLayout component with TypeScript typing
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
       <body
         style={{
-          marginLeft: "0px", // Offset for toolbar width
+          margin: 0,
           minHeight: "100vh",
         }}
       >
         <StyledComponentsRegistry>
-          <Toolbar />
-          {children}
+          <ClientErrorBoundaryWrapper>
+            <Toolbar />
+            {children}
+          </ClientErrorBoundaryWrapper>
         </StyledComponentsRegistry>
       </body>
     </html>
