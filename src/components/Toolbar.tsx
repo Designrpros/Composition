@@ -68,7 +68,7 @@ export default function Toolbar() {
               style={{ filter: "invert(1)" }}
             />
             <span data-is-open={isOpen}>
-              {isOpen && window.innerWidth <= 900 ? tab.label : tab.label.charAt(0)}
+              {isOpen && window.innerWidth <= 1200 ? tab.label : tab.label.charAt(0)}
             </span>
             <span className="tooltip">{tab.label}</span>
           </Link>
